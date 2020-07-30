@@ -1,0 +1,28 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "nome": "Front End",
+      "descricao": "Desenvolvimento web",
+      "cor": "#cbd1ff"
+    },
+    {
+      "id": 2,
+      "nome": "Back End",
+      "descricao": "test json server",
+      "cor": "#cbd1ff"
+    },
+    {
+      "id": 3,
+      "nome": "Front End",
+      "descricao": "Desenvolvimento web",
+      "cor": "#cbd1ff"
+    },
+    {
+      "id": 4,
+      "nome": "Front End",
+      "descricao": "Desenvolvimento web",
+      "cor": "#cbd1ff"
+    }
+  ]
+}
