@@ -36,26 +36,7 @@ function CadastroCategoria() {
           ...resposta,
         ]);
       });
-
-    //setTimeout(() => {
-    //  setCategorias([
-    //  ...categorias,
-    //    {
-     //     id: 1,
-    //      nome: 'Front End',
-    //      descricao: 'Desenvolvimento web',
-    //      cor: '#cbd1ff'
-    //    },
-    //    {
-    //      id: 2,
-    //      nome: 'Back End',
-    //      descricao: 'test effect',
-    //      cor: '#cbd1ff'
-    //    },
-    //  ]);
-    //}, 4 * 1000);
-  }, [
-     // se este segundo parâmetro estive vazio, carrega apenas ao iniciar
+  }, [// se este segundo parâmetro estive vazio, carrega apenas ao iniciar
   ]);
 
   return (
@@ -104,7 +85,6 @@ function CadastroCategoria() {
           Cadastrar
         </Button>
       </form>
-      
       {categorias.length === 0 && (
         <div>
           Loading...
