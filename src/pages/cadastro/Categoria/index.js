@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PageDefault from '../../../components/PageDefault';
 import FormField from '../../../components/FormField';
 import Button from '../../../components/Button';
+import useForm from '../../../hooks/useForm';
 
 function CadastroCategoria() {
   const inicialValues = {
@@ -12,23 +13,14 @@ function CadastroCategoria() {
     cor: '#000',
   };
 
+  const { handleChange, values, clearForm } = useForm(inicialValues);
+
   const [categorias, setCategorias] = useState([]);
-  const [values, setValues] = useState(inicialValues);
-
-  function setValue(chave, valor) {
-    setValues({
-      ...values,
-      [chave]: valor, // nome: 'valor'
-    });
-  }
-
-  function handleChange(novaCategoria) {
-    setValue(novaCategoria.target.getAttribute('name'),
-      novaCategoria.target.value);
-  }
 
   useEffect(() => {
-    const URL_TOP = 'https://guiflix.herokuapp.com/categorias';
+    const URL_TOP = window.location.hostname.includes('localhost')
+      ? 'http://localhost:8080/categorias'
+      : 'https://guiflix.herokuapp.com/categorias';
     fetch(URL_TOP)
       .then(async (respostaDoServidor) => {
         const resposta = await respostaDoServidor.json();
@@ -53,14 +45,13 @@ function CadastroCategoria() {
           values,
         ]);
 
-        setValues(inicialValues);
+        clearForm();
       }}
       >
 
         <FormField
           label="Nome da categoria: "
           value={values.nome}
-          type="text"
           name="nome"
           onChange={handleChange}
         />
@@ -85,6 +76,7 @@ function CadastroCategoria() {
           Cadastrar
         </Button>
       </form>
+
       {categorias.length === 0 && (
         <div>
           Loading...
@@ -93,8 +85,8 @@ function CadastroCategoria() {
 
       <ul>
         {categorias.map((categoria) => (
-          <li key={`${categoria.nome}`}>
-            {categoria.nome}
+          <li key={`${categoria.titulo}`}>
+            {categoria.titulo}
           </li>
         ))}
       </ul>
